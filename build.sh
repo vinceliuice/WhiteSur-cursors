@@ -21,7 +21,7 @@ if [ ! "$(which xcursorgen 2> /dev/null)" ]; then
 fi
 
 if [ ! "$(which inkscape 2> /dev/null)" ]; then
-  echo xorg-xcursorgen needs to be installed to generate the cursors.
+  echo inkscape needs to be installed to generate the cursors.
   if has_command zypper; then
     sudo zypper in inkscape
   elif has_command apt; then
