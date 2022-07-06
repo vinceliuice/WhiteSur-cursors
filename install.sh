@@ -10,7 +10,9 @@ else
   DEST_DIR="$HOME/.local/share/icons"
 fi
 
-if [ -d "$DEST_DIR/WhiteSur-cursors" ]; then
+if [ ! -d "$DEST_DIR" ]; then
+  mkdir -p $DEST_DIR
+elif [ -d "$DEST_DIR/WhiteSur-cursors" ]; then
   rm -r "$DEST_DIR/WhiteSur-cursors"
 fi
 
