@@ -1,0 +1,15 @@
+<svg width="32" height="32" version="1.1" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+ <defs>
+  <filter id="a" x="-.11901" y="-.12101" width="1.238" height="1.242" color-interpolation-filters="sRGB">
+   <feGaussianBlur stdDeviation="0.73740225"/>
+  </filter>
+ </defs>
+ <g transform="translate(0 -1020.4)">
+  <g transform="translate(-221 724.57)">
+   <path transform="matrix(0,-1,-1,0,548,479)" d="m167.21 302.59-0.70703 0.70703-2.0918 2.0938 2.6289 2.6289-7.041-0.0176v4l7.0527 0.0176-2.6406 2.6406 2.8008 2.8008 7.4121-7.459z" color="#000000" color-rendering="auto" enable-background="new" filter="url(#a)" image-rendering="auto" opacity=".35" shape-rendering="auto" solid-color="#000000" style="isolation:auto;mix-blend-mode:normal;text-decoration-color:#000000;text-decoration-line:none;text-decoration-style:solid;text-indent:0;text-transform:none;white-space:normal"/>
+   <path d="m243 310.79-1.3858 1.3851-3.6348-3.6349 0.0211 8.4614h-2l-0.0211-8.4614-3.6344 3.6349-1.3851-1.3851 6.0406-6.0009z" enable-background="new" fill="#151515" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+   <path d="m243 310.79-1.3858 1.3851-3.6348-3.6349 0.0211 8.4614h-2l-0.0211-8.4614-3.6344 3.6349-1.3851-1.3851 6.0406-6.0009z" enable-background="new" fill="#151515"/>
+   <rect transform="rotate(90)" x="300" y="-249" width="24" height="24" fill="none" opacity=".2"/>
+  </g>
+ </g>
+</svg>

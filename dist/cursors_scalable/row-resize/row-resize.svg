@@ -1,0 +1,19 @@
+<svg width="32" height="32" version="1.1" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+ <defs>
+  <filter id="a" x="-.22761" y="-.25381" width="1.4552" height="1.5076" color-interpolation-filters="sRGB">
+   <feGaussianBlur stdDeviation="1.9036014"/>
+  </filter>
+ </defs>
+ <g transform="translate(0 -1020.4)">
+  <g transform="rotate(-90 15.492 1035.9)">
+   <g transform="translate(-74.345,23.878)">
+    <path d="m88.396 1004a1.0001 1.0001 0 0 0-1 1v6h-2v-1.5351a1.0001 1.0001 0 0 0-1.0293-1 1.0001 1.0001 0 0 0-0.58398 0.2109l-4.5371 3.5352a1.0001 1.0001 0 0 0 0 1.5781l4.5371 3.5351a1.0001 1.0001 0 0 0 1.6133-0.789v-1.5352h2v6a1.0001 1.0001 0 0 0 1 1h1a1.0001 1.0001 0 0 0 1-1v-6h2v1.5352a1.0001 1.0001 0 0 0 1.6152 0.789l4.5352-3.5351a1.0001 1.0001 0 0 0 0-1.5781l-4.5352-3.5352a1.0001 1.0001 0 0 0-1.6152 0.7891v1.5351h-2v-6a1.0001 1.0001 0 0 0-1-1zm-5 7.5117v0.4864a1.0001 1.0001 0 0 0 1 1 1.0001 1.0001 0 0 0-1 1v0.4863l-1.9082-1.4863zm11 0 1.9102 1.4883-1.9102 1.4883v-0.4883a1.0001 1.0001 0 0 0-1-1 1.0001 1.0001 0 0 0 1-1z" color="#000000" color-rendering="auto" dominant-baseline="auto" filter="url(#a)" image-rendering="auto" opacity=".35" shape-rendering="auto" solid-color="#000000" style="font-feature-settings:normal;font-variant-alternates:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-variant-numeric:normal;font-variant-position:normal;isolation:auto;mix-blend-mode:normal;paint-order:stroke fill markers;shape-padding:0;text-decoration-color:#000000;text-decoration-line:none;text-decoration-style:solid;text-indent:0;text-orientation:mixed;text-transform:none;white-space:normal"/>
+    <rect x="89.345" y="1004.5" width="1" height="16" fill="#151515" stroke="#fefefe" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" style="paint-order:stroke fill markers"/>
+    <rect transform="rotate(-90)" x="-1024.5" y="78.809" width="24" height="24" fill="none" opacity=".2"/>
+    <path d="m85.345 1016v-2.5357l9-2e-4v2.5357l4.5355-3.5356-4.5355-3.5355v2.5356l-9 2e-4v-2.5356l-4.5355 3.5353z" color="#000000" color-rendering="auto" fill="none" image-rendering="auto" shape-rendering="auto" solid-color="#000000" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" style="isolation:auto;mix-blend-mode:normal;text-decoration-color:#000000;text-decoration-line:none;text-decoration-style:solid;text-indent:0;text-transform:none;white-space:normal"/>
+    <path d="m85.345 1016v-2.5357l9-2e-4v2.5357l4.5355-3.5356-4.5355-3.5355v2.5356l-9 2e-4v-2.5356l-4.5355 3.5353z" color="#000000" color-rendering="auto" fill="#151515" fill-rule="evenodd" image-rendering="auto" shape-rendering="auto" solid-color="#000000" style="isolation:auto;mix-blend-mode:normal;text-decoration-color:#000000;text-decoration-line:none;text-decoration-style:solid;text-indent:0;text-transform:none;white-space:normal"/>
+    <rect x="89.345" y="1004.5" width="1" height="16" fill="#151515" style="paint-order:stroke fill markers"/>
+   </g>
+  </g>
+ </g>
+</svg>
