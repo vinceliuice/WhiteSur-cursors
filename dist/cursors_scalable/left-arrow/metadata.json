@@ -1,8 +1,8 @@
 [
     {
         "filename": "left-arrow.svg",
-        "hotspot_x": 4,
-        "hotspot_y": 16,
+        "hotspot_x": 10,
+        "hotspot_y": 15,
         "nominal_size": 24
     }
 ]
