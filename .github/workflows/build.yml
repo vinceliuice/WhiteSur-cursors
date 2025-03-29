@@ -36,8 +36,8 @@ jobs:
 
     - name: setup
       run: |
-        sudo apt update
-        sudo apt install -y inkscape python3 x11-apps python3-cairosvg
+        sudo apt-get update
+        sudo apt-get install -y inkscape python3 x11-apps python3-cairosvg
         rm -rf ${{ github.workspace }}/main/dist
         mkdir -p ${{ github.workspace }}/main/dist
 
