@@ -66,8 +66,8 @@ jobs:
       with:
         files: |
           ${{ github.workspace }}/main/dist/{{ github.event.repository.name }}.tar.gz
-        tag_name: ${{ github.event.repository.name }} ${{ github.ref_name }}
-        name:  ${{ github.ref_name }}
+        tag_name: ${{ github.ref_name }}
+        name:  ${{ github.event.repository.name }} ${{ github.ref_name }}
         body: 'Changes:'
         generate_release_notes: true
       env:
