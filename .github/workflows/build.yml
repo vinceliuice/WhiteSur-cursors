@@ -32,8 +32,20 @@ jobs:
       id: package_list
       working-directory: ${{ github.workspace }}/main
       run: |
-        PACKAGES=$(cat apt-packages.txt | tr '\n' ' ' | sed 's/ *$//')
-        echo "PACKAGES=$PACKAGES" >> $GITHUB_OUTPUT
+        BASE_PACKAGES=$(cat apt-packages.txt | tr '\n' ' ' | sed 's/ *$//')
+
+        # Get all recursive dependencies (excluding originals)
+        DEPS=$(for pkg in $BASE_PACKAGES; do
+        apt-rdepends --follow=Depends $pkg 2>/dev/null |
+        awk '/Depends:/ {print $2}' |
+        grep -vE "^$pkg$|^ " |
+        sort -u
+        done | tr '\n' ' ' | sed 's/ *$//')
+
+        # Combine base packages with dependencies
+        ALL_PACKAGES="$BASE_PACKAGES $DEPS"
+
+        echo "packages=$ALL_PACKAGES" >> $GITHUB_OUTPUT
 
     - name: cache apt packages
       uses: awalsh128/cache-apt-pkgs-action@latest
