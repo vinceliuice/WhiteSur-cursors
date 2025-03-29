@@ -38,7 +38,6 @@ jobs:
         path-include=/usr/share/doc/*/copyright;
         EOF
         sudo chmod 644 /etc/dpkg/dpkg.cfg.d/01_nodoc
-        cat /etc/dpkg/dpkg.cfg.d/01_nodoc
 
     - name: setup
       working-directory: ${{ github.workspace }}/main
@@ -46,7 +45,7 @@ jobs:
         rm -rf dist
         mkdir dist
         sudo apt-get update
-        cat apt-packages.txt | xargs -r sudo apt-get install -y
+        cat apt-packages.txt | xargs -r sudo apt-get install --no-install-recommends -y
 
     - name: build x cursors
       working-directory: ${{ github.workspace }}/main
