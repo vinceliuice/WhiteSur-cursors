@@ -53,7 +53,6 @@ jobs:
         ../svg-cursor/build-svg-theme/build-svg-theme.py --output-dir=dist/cursors_scalable --svg-dir=src/svg --config-dir=src/config --alias-file=src/cursorList --nominal-size=${{ env.NOMINAL_SIZE }}
 
     - name: Package artifacts for release
-      if: startsWith(github.ref, 'refs/tags/')
       run: |
         tar czf ${{ github.event.repository.name }}.tar.gz -C ${{ github.workspace }}/main/dist/ .
 
