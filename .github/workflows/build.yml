@@ -26,10 +26,12 @@ jobs:
         path: svg-cursor
 
 
-    - name: get-deps
+    - name: setup
       run: |
         sudo apt-get update
         sudo apt-get install -y inkscape python3 x11-apps python3-cairosvg
+        rm -rf /home/runner/work/WhiteSur-cursors/WhiteSur-cursors/main/dist
+        mkdir -p /home/runner/work/WhiteSur-cursors/WhiteSur-cursors/main/
 
     - name: build-xcursor
       run: |
@@ -44,5 +46,5 @@ jobs:
     - uses: actions/upload-artifact@v4
       with:
         name: WhiteSur-cursors
-        path: /home/runner/work/WhiteSur-cursors/WhiteSur-cursors/dist/
+        path: /home/runner/work/WhiteSur-cursors/WhiteSur-cursors/main/dist/
   
