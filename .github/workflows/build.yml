@@ -1,6 +1,5 @@
 name: build
 
-
 on:
 
  push:
@@ -8,7 +7,6 @@ on:
      - '*'
      
  workflow_dispatch:
-
 
 env:
   NOMINAL_SIZE: 24
@@ -70,7 +68,7 @@ jobs:
           ${{ github.workspace }}/main/dist/{{ github.event.repository.name }}.tar.gz
         tag_name: ${{ github.event.repository.name }} ${{ github.ref_name }}
         name:  ${{ github.ref_name }}
-        body: Changes:
+        body: 'Changes:'
         generate_release_notes: true
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
