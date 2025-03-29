@@ -29,6 +29,11 @@ jobs:
         repository: jinliu/svg-cursor
         path: svg-cursor
 
+    - name: cache packages
+      uses: actions/cache@v4
+      with:
+        path: /var/cache/apt/archives
+        key: ${{ runner.os }}-${{ hashFiles('**/requirements.txt') }}
 
     - name: setup
       run: |
