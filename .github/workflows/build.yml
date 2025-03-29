@@ -27,12 +27,24 @@ jobs:
       with:
         repository: jinliu/svg-cursor
         path: svg-cursor
-        
+
+    - name: speed up apt
+      run: |
+        sudo mkdir -p /etc/dpkg/dpkg.cfg.d
+        sudo tee /etc/dpkg/dpkg.cfg.d/01_nodoc <<'EOF'
+        path-exclude=/usr/share/locale/*;
+        path-exclude=/usr/share/man/*;
+        path-exclude=/usr/share/doc/*;
+        path-include=/usr/share/doc/*/copyright;
+        EOF
+        sudo chmod 644 /etc/dpkg/dpkg.cfg.d/01_nodoc
+
     - name: setup
       working-directory: ${{ github.workspace }}/main
       run: |
         rm -rf dist
         mkdir dist
+        sudo apt-get update
         cat apt-packages.txt | xargs -r sudo apt-get install -y
 
     - name: build x cursors
