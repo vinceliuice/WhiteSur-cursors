@@ -17,6 +17,6 @@ jobs:
     - name: build
       run: |
         sudo apt-get update
-        sudo apt-get install -y inkscape python3 x11-apps python-cairosvg
+        sudo apt-get install -y inkscape python3 x11-apps python3-cairosvg
         cd WhiteSur-cursors
         ./build.sh
