@@ -40,6 +40,7 @@ jobs:
       with:
         packages: ${{ steps.package_list.outputs.PACKAGES }}
         version: 1.0
+        execute_install_scripts: true
 
     - name: setup
       run: |
