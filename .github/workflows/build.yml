@@ -33,7 +33,7 @@ jobs:
       uses: actions/cache@v4
       with:
         path: /var/cache/apt/archives
-        key: ${{ runner.os }}-${{ hashFiles('**/requirements.txt') }}
+        key: ${{ runner.os }}-${{ hashFiles('**/packages.txt') }}
 
     - name: setup
       run: |
