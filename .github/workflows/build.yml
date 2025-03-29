@@ -36,7 +36,7 @@ jobs:
 
     - name: Read package list from file
       id: package_list
-      working-directory: ${{ github.workspace }}
+      working-directory: ${{ github.workspace }}/main
       run: |
         packages=$(cat apt-packages.txt)
         echo "packages=$packages" >> "$GITHUB_OUTPUT"
