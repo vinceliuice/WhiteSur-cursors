@@ -29,9 +29,10 @@ jobs:
         path: svg-cursor
         
     - name: setup
+      working-directory: ${{ github.workspace }}/main
       run: |
-        rm -rf ${{ github.workspace }}/main/dist
-        mkdir -p ${{ github.workspace }}/main/dist
+        rm -rf dist
+        mkdir dist
         cat apt-packages.txt | xargs -r sudo apt-get install -y
 
     - name: build x cursors
