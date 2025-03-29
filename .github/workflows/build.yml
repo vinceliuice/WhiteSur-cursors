@@ -10,7 +10,7 @@ on:
 
 
 env:
-  NOMINAL_SIZE: 32
+  NOMINAL_SIZE: 24
 
 jobs:
  build:
