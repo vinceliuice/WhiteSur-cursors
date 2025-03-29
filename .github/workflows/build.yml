@@ -36,6 +36,7 @@ jobs:
 
     - name: read apt packages from file
       id: package_list
+      working-directory: ${{ github.workspace }}/main
       run: |
         PACKAGES=$(cat apt-packages.txt | tr '\n' ' ' | sed 's/ *$//')
         echo "PACKAGES=$PACKAGES" >> $GITHUB_OUTPUT
