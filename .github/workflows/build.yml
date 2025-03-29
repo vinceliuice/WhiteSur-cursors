@@ -39,7 +39,7 @@ jobs:
       uses: awalsh128/cache-apt-pkgs-action@latest
       with:
         packages: ${{ steps.package_list.outputs.PACKAGES }}
-        version: 2
+        version: 2.0
 
     - name: setup
       run: |
