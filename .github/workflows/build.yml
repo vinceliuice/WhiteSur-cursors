@@ -27,33 +27,12 @@ jobs:
       with:
         repository: jinliu/svg-cursor
         path: svg-cursor
-
-    - name: read apt packages from file
-      id: package_list
-      working-directory: ${{ github.workspace }}/main
-      run: |
-        sudo apt-get update
-        sudo apt-get install apt-rdepends
-        BASE_PACKAGES=$(cat apt-packages.txt | tr '\n' ' ' | sed 's/ *$//')
-        DEPS=$(for pkg in $BASE_PACKAGES; do
-        apt-rdepends --follow=Depends $pkg 2>/dev/null |
-        awk '/Depends:/ {print $2}' |
-        grep -vE "^$pkg$|^ " |
-        sort -u
-        done | tr '\n' ' ' | sed 's/ *$//')
-        ALL_PACKAGES="$BASE_PACKAGES $DEPS"
-        echo "packages=$ALL_PACKAGES" >> $GITHUB_OUTPUT
-
-    - name: cache apt packages
-      uses: awalsh128/cache-apt-pkgs-action@latest
-      with:
-        packages: ${{ steps.package_list.outputs.PACKAGES }}
-        version: 5.0
         
     - name: setup
       run: |
         rm -rf ${{ github.workspace }}/main/dist
         mkdir -p ${{ github.workspace }}/main/dist
+        cat apt-packages.txt | xargs -r sudo apt-get install -y
 
     - name: build x cursors
       working-directory: ${{ github.workspace }}/main
