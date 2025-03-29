@@ -14,9 +14,16 @@ jobs:
 
   steps:
     - uses: actions/checkout@v4
+    
     - name: build
       run: |
         sudo apt-get update
         sudo apt-get install -y inkscape python3 x11-apps python3-cairosvg
         cd /home/runner/work/WhiteSur-cursors/WhiteSur-cursors
         ./build.sh
+        
+    - uses: actions/upload-artifact@v4
+      with:
+        name: WhiteSur-cursors
+        path: /home/runner/work/WhiteSur-cursors/WhiteSur-cursors/dist/
+  
