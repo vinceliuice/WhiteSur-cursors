@@ -18,5 +18,5 @@ jobs:
       run: |
         sudo apt-get update
         sudo apt-get install -y inkscape python3 x11-apps python3-cairosvg
-        cd WhiteSur-cursors
+        cd /home/runner/work/WhiteSur-cursors/WhiteSur-cursors
         ./build.sh
