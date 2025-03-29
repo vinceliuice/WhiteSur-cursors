@@ -33,18 +33,13 @@ jobs:
       working-directory: ${{ github.workspace }}/main
       run: |
         BASE_PACKAGES=$(cat apt-packages.txt | tr '\n' ' ' | sed 's/ *$//')
-
-        # Get all recursive dependencies (excluding originals)
         DEPS=$(for pkg in $BASE_PACKAGES; do
         apt-rdepends --follow=Depends $pkg 2>/dev/null |
         awk '/Depends:/ {print $2}' |
         grep -vE "^$pkg$|^ " |
         sort -u
         done | tr '\n' ' ' | sed 's/ *$//')
-
-        # Combine base packages with dependencies
         ALL_PACKAGES="$BASE_PACKAGES $DEPS"
-
         echo "packages=$ALL_PACKAGES" >> $GITHUB_OUTPUT
 
     - name: cache apt packages
