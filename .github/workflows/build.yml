@@ -28,12 +28,6 @@ jobs:
         repository: jinliu/svg-cursor
         path: svg-cursor
 
-    - name: cache packages
-      uses: actions/cache@v4
-      with:
-        path: /var/cache/apt/archives
-        key: ${{ runner.os }}-${{ hashFiles('**/apt-packages.txt') }}
-
     - name: read apt packages from file
       id: package_list
       working-directory: ${{ github.workspace }}/main
