@@ -34,6 +34,17 @@ jobs:
         path: /var/cache/apt/archives
         key: ${{ runner.os }}-${{ hashFiles('**/apt-packages.txt') }}
 
+    - name: Read package list from file
+      id: package_list
+      run: |
+        packages=$(cat apt-packages.txt)
+        echo "packages=$packages" >> "$GITHUB_OUTPUT"
+
+    - uses: awalsh128/cache-apt-pkgs-action@latest
+      with:
+        packages: ${{ steps.package_list.outputs.packages }}
+        version: 1.0
+
     - name: setup
       run: |
         sudo apt-get update
