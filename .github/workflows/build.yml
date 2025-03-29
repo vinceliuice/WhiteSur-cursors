@@ -77,7 +77,6 @@ jobs:
           ${{ github.workspace }}/main/dist/{{ github.event.repository.name }}.tar.gz
         tag_name: ${{ github.ref_name }}
         name:  ${{ github.event.repository.name }} ${{ github.ref_name }}
-        body: 'Changes:'
         generate_release_notes: true
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
