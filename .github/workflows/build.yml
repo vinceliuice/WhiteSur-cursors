@@ -1,0 +1,20 @@
+name: build
+
+on:
+
+ push:
+   tags:
+     - '*'
+
+jobs:
+ build:
+  runs-on: ubuntu-24.04
+
+  steps:
+    - uses: actions/checkout@v4
+    - name: build
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y inkscape python3 x11-apps python-cairosvg
+        cd WhiteSur-cursors
+        ./build.sh
