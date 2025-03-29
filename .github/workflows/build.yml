@@ -14,11 +14,12 @@ jobs:
 
   steps:
 
-    - name: checkout
+    - name: checkout main
       uses: actions/checkout@v4
       with:
         path: main
-
+        
+    - name: checkout svg-cursor
       uses: actions/checkout@v4
       with:
         repository: jinliu/svg-cursor
