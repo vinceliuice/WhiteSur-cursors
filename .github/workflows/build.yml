@@ -41,9 +41,10 @@ jobs:
         packages: ${{ steps.package_list.outputs.PACKAGES }}
         version: 3.0
 
-    - run: sudo apt-get install inkscape
-      shell: bash
-
+    - run: |
+        sudo apt-get update
+        sudo apt-get install inkscape
+        
     - name: setup
       run: |
         rm -rf ${{ github.workspace }}/main/dist
