@@ -32,6 +32,8 @@ jobs:
       id: package_list
       working-directory: ${{ github.workspace }}/main
       run: |
+        sudo apt-get update
+        sudo apt-get install apt-rdepends
         BASE_PACKAGES=$(cat apt-packages.txt | tr '\n' ' ' | sed 's/ *$//')
         DEPS=$(for pkg in $BASE_PACKAGES; do
         apt-rdepends --follow=Depends $pkg 2>/dev/null |
