@@ -64,5 +64,6 @@ jobs:
           ${{ github.workspace }}/main/dist/{{ github.event.repository.name }}.tar.gz
         tag_name: ${{ github.ref_name }}
         name: Release ${{ github.ref_name }}
+        generate_release_notes: true
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
