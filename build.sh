@@ -123,7 +123,7 @@ function svg-cursors {
 	git clone https://github.com/jinliu/svg-cursor.git
 
 	echo -e "Generating SVG cursors...\\r"
-	./svg-cursor/build-svg-theme/build-svg-theme.py --output-dir=$ROOT/dist/cursors_scalable --svg-dir=$SRC/svg --config-dir=$SRC/config --alias-file=$SRC/cursorList --nominal-size=24
+	./svg-cursor/build-svg-theme/build-svg-theme.py --output-dir=$ROOT/dist/cursors_scalable --svg-dir=$SRC/svg --config-dir=$SRC/config --alias-file=$SRC/cursorList --nominal-size=24 >/dev/null 2>&1
 	echo -e "Generating SVG cursors... DONE"
 }
 
