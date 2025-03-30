@@ -1,5 +1,8 @@
 #! /usr/bin/env bash
 
+# from where the command was run
+ROOT=$(pwd)
+
 # check command avalibility
 has_command() {
 	command -v "$1" >/dev/null 2>&1
@@ -32,6 +35,21 @@ if [ ! "$(which rsvg-convert 2> /dev/null)" ]; then
 		sudo dnf install -y librsvg2 librsvg2-tools
 	elif has_command pacman; then
 		sudo pacman -S --noconfirm librsvg
+	fi
+fi
+
+if [ ! "$(which python3 2> /dev/null)" ]; then
+	echo python3 needs to be installed to generate svg cursors.
+	if has_command zypper; then
+		sudo zypper install -y python3
+	elif has_command apt-get; then
+		sudo apt-get install -y python3
+	elif has_command dnf; then
+		sudo dnf install -y python3
+	elif has_command yum; then
+		sudo dnf install -y python3
+	elif has_command pacman; then
+		sudo pacman -S --noconfirm python
 	fi
 fi
 
@@ -95,8 +113,19 @@ function create {
 }
 
 # generate pixmaps from svg source
-SRC=$PWD/src
+SRC=$ROOT/src
 THEME="WhiteSur Cursors"
 
-create svg
+function svg-cursors {
+	cd $ROOT
+	rm -rf ./svg-cursor/
+	rm -rf ./dist/cursors_scalable/
+	git clone https://github.com/jinliu/svg-cursor.git
 
+	echo -e "Generating SVG cursors...\\r"
+	./svg-cursor/build-svg-theme/build-svg-theme.py --output-dir=$ROOT/dist/cursors_scalable --svg-dir=$SRC/svg --config-dir=$SRC/config --alias-file=$SRC/cursorList --nominal-size=24
+	echo -e "Generating SVG cursors... DONE"
+}
+
+create svg
+svg-cursors
