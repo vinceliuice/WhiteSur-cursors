@@ -2,37 +2,37 @@
 
 # check command avalibility
 has_command() {
-  "$1" -v $1 > /dev/null 2>&1
+	command -v "$1" >/dev/null 2>&1
 }
 
 if [ ! "$(which xcursorgen 2> /dev/null)" ]; then
-  echo xorg-xcursorgen needs to be installed to generate the cursors.
-  if has_command zypper; then
-    sudo zypper in xorg-xcursorgen
-  elif has_command apt; then
-    sudo apt install xorg-xcursorgen
-  elif has_command dnf; then
-    sudo dnf install -y xorg-xcursorgen
-  elif has_command dnf; then
-    sudo dnf install xorg-xcursorgen
-  elif has_command pacman; then
-    sudo pacman -S --noconfirm xorg-xcursorgen
-  fi
+	echo xorg-xcursorgen needs to be installed to generate the cursors.
+	if has_command zypper; then
+		sudo zypper in xcursorgen
+	elif has_command apt-get; then
+		sudo apt-get install -y xorg-xcursorgen || sudo apt-get install -y x11-apps
+	elif has_command dnf; then
+		sudo dnf install -y xcursorgen
+	elif has_command yum; then
+		sudo dnf install -y xcursorgen
+	elif has_command pacman; then
+		sudo pacman -S --noconfirm xorg-xcursorgen
+	fi
 fi
 
 if [ ! "$(which inkscape 2> /dev/null)" ]; then
-  echo inkscape needs to be installed to generate the cursors.
-  if has_command zypper; then
-    sudo zypper in inkscape
-  elif has_command apt; then
-    sudo apt install inkscape
-  elif has_command dnf; then
-    sudo dnf install -y inkscape
-  elif has_command dnf; then
-    sudo dnf install inkscape
-  elif has_command pacman; then
-    sudo pacman -S --noconfirm inkscape
-  fi
+	echo inkscape needs to be installed to generate the cursors.
+	if has_command zypper; then
+		sudo zypper in inkscape
+	elif has_command apt-get; then
+		sudo apt-get install -y inkscape
+	elif has_command dnf; then
+		sudo dnf install -y inkscape
+	elif has_command yum; then
+		sudo dnf install -y inkscape
+	elif has_command pacman; then
+		sudo pacman -S --noconfirm xorg-xcursorgen
+	fi
 fi
 
 function create {
