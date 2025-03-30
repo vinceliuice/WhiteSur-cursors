@@ -8,7 +8,7 @@ has_command() {
 if [ ! "$(which xcursorgen 2> /dev/null)" ]; then
 	echo xorg-xcursorgen needs to be installed to generate the cursors.
 	if has_command zypper; then
-		sudo zypper in xcursorgen
+		sudo zypper install -y xcursorgen
 	elif has_command apt-get; then
 		sudo apt-get install -y xorg-xcursorgen || sudo apt-get install -y x11-apps
 	elif has_command dnf; then
@@ -20,18 +20,18 @@ if [ ! "$(which xcursorgen 2> /dev/null)" ]; then
 	fi
 fi
 
-if [ ! "$(which inkscape 2> /dev/null)" ]; then
-	echo inkscape needs to be installed to generate the cursors.
+if [ ! "$(which rsvg-convert 2> /dev/null)" ]; then
+	echo rsvg-convert needs to be installed to generate the cursors.
 	if has_command zypper; then
-		sudo zypper in inkscape
+		sudo zypper install -y rsvg-convert
 	elif has_command apt-get; then
-		sudo apt-get install -y inkscape
+		sudo apt-get install -y librsvg2-bin
 	elif has_command dnf; then
-		sudo dnf install -y inkscape
+		sudo dnf install -y librsvg2 librsvg2-tools
 	elif has_command yum; then
-		sudo dnf install -y inkscape
+		sudo dnf install -y librsvg2 librsvg2-tools
 	elif has_command pacman; then
-		sudo pacman -S --noconfirm xorg-xcursorgen
+		sudo pacman -S --noconfirm librsvg
 	fi
 fi
 
@@ -39,10 +39,10 @@ function create {
 	cd "$SRC"
 	mkdir -p x1 x1_25 x1_5 x2
 	cd "$SRC"/$1
-	find . -name "*.svg" -type f -exec sh -c 'inkscape -o "../x1/${0%.svg}.png" -w 32 -h 32 $0' {} \;
-	find . -name "*.svg" -type f -exec sh -c 'inkscape -o "../x1_25/${0%.svg}.png" -w 40 -w 40 $0' {} \;
-	find . -name "*.svg" -type f -exec sh -c 'inkscape -o "../x1_5/${0%.svg}.png" -w 48 -w 48 $0' {} \;
-	find . -name "*.svg" -type f -exec sh -c 'inkscape -o "../x2/${0%.svg}.png" -w 64 -w 64 $0' {} \;
+	find . -name "*.svg" -exec sh -c 'rsvg-convert -w 32 -h 32 "$0" -o "../x1/$(basename "$0" .svg).png"' {} \;
+	find . -name "*.svg" -exec sh -c 'rsvg-convert -w 40 -h 40 "$0" -o "../x1_25/$(basename "$0" .svg).png"' {} \;
+	find . -name "*.svg" -exec sh -c 'rsvg-convert -w 48 -h 48 "$0" -o "../x1_5/$(basename "$0" .svg).png"' {} \;
+	find . -name "*.svg" -exec sh -c 'rsvg-convert -w 64 -h 64 "$0" -o "../x2/$(basename "$0" .svg).png"' {} \;
 
 	cd $SRC
 
