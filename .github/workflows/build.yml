@@ -10,30 +10,10 @@ jobs:
 
   steps:
 
-    - name: checkout main
-      uses: actions/checkout@v4
-      with:
-        path: main
-        
-    - name: checkout svg-cursor
-      uses: actions/checkout@v4
-      with:
-        repository: jinliu/svg-cursor
-        path: svg-cursor
-
-    - name: speed up apt
-      run: |
-        sudo mkdir -p /etc/dpkg/dpkg.cfg.d
-        sudo tee /etc/dpkg/dpkg.cfg.d/01_nodoc <<'EOF'
-        path-exclude=/usr/share/locale/*;
-        path-exclude=/usr/share/man/*;
-        path-exclude=/usr/share/doc/*;
-        path-include=/usr/share/doc/*/copyright;
-        EOF
-        sudo chmod 644 /etc/dpkg/dpkg.cfg.d/01_nodoc
+    - uses: actions/checkout@v4
 
     - name: setup
-      working-directory: ${{ github.workspace }}/main
+      working-directory: ${{ github.workspace }}
       run: |
         rm -rf dist
         mkdir dist
@@ -41,12 +21,12 @@ jobs:
         cat apt-packages.txt | xargs -r sudo apt-get install --no-install-recommends -y
 
     - name: build cursors
-      working-directory: ${{ github.workspace }}/main
+      working-directory: ${{ github.workspace }}
       run: ./build.sh
 
     - name: package artifacts
       run: |
-        tar czf ${{ github.event.repository.name }}.tar.gz -C ${{ github.workspace }}/main/dist/ .
+        tar czf ${{ github.event.repository.name }}.tar.gz -C ${{ github.workspace }}/dist/ .
 
     - uses: actions/upload-artifact@v4
       with:
