@@ -18,7 +18,7 @@ jobs:
         rm -rf dist
         mkdir dist
         sudo apt-get update
-        cat apt-packages.txt | xargs -r sudo apt-get install --no-install-recommends -y
+        sudo apt-get install --no-install-recommends -y x11-apps python3 librsvg2-bin
 
     - name: build cursors
       working-directory: ${{ github.workspace }}

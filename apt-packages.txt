@@ -1,3 +1,0 @@
-x11-apps
-python3
-librsvg2-bin
