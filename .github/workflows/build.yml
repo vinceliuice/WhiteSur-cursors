@@ -1,0 +1,46 @@
+name: build
+
+on:
+ push:
+ workflow_dispatch:
+
+jobs:
+ build:
+  runs-on: ubuntu-24.04
+
+  steps:
+
+    - uses: actions/checkout@v4
+
+    - name: setup
+      working-directory: ${{ github.workspace }}
+      run: |
+        rm -rf dist
+        mkdir dist
+        sudo apt-get update
+        sudo apt-get install --no-install-recommends -y x11-apps python3 librsvg2-bin
+
+    - name: build cursors
+      working-directory: ${{ github.workspace }}
+      run: ./build.sh
+
+    - name: package artifacts
+      run: |
+        tar czf ${{ github.event.repository.name }}.tar.gz -C ${{ github.workspace }}/dist/ .
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: ${{ github.event.repository.name }}-${{ github.run_number }}
+        path: ${{ github.workspace }}/${{ github.event.repository.name }}.tar.gz
+
+    - name: release
+      uses: softprops/action-gh-release@v2
+      if: startsWith(github.ref, 'refs/tags/')
+      with:
+        files: |
+          ${{ github.workspace }}/{{ github.event.repository.name }}.tar.gz
+        tag_name: ${{ github.ref_name }}
+        name:  ${{ github.event.repository.name }} ${{ github.ref_name }}
+        generate_release_notes: true
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
